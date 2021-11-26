@@ -27,13 +27,13 @@ public class Cliente {
     private String contra;
     private String status;
 
-    public Cliente(String usuario, String contra, String status) {
+    /*public Cliente(String usuario, String contra, String status) {
         this.usuario = usuario;
         this.contra = contra;
         this.status = status;
     }
 
     public Cliente() {
-    }
+    }*/
 
 }

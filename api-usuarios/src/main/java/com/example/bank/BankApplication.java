@@ -1,5 +1,6 @@
 package com.example.bank;
 
+import net.bytebuddy.agent.builder.AgentBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +11,6 @@ public class BankApplication {
 		SpringApplication.run(BankApplication.class, args);
 	}
 
-
+	AgentBuilder.RawMatcher.Inversion inversion;
 
 }

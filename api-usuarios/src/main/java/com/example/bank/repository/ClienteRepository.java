@@ -3,6 +3,7 @@ package com.example.bank.repository;
 import com.example.bank.dao.ClienteDao;
 import com.example.bank.entity.Cliente;
 import com.example.bank.exception.crudUsuario.ClienteExistenteException;
+import com.example.bank.exception.crudUsuario.CorreoYaExistenteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -49,7 +50,7 @@ public class ClienteRepository {
 
     public String busquedaAlfanumericos(String contra){
         char[] contraChar = contra.toCharArray();
-        char[] alfa = {'!','"','#','$','%','&','/','(',')','=','?','¿','¡','*','+','}','{','_','-',':','^','@'};
+        char[] alfa = {'!','"','$','%','&','(',')','=','?','¿','¡','*','+','}','{','_','-',':','^','@', '.'};
         for(int i = 0; i<alfa.length;i++){
             for (int j=0; j<contraChar.length;j++){
                 if (alfa[i]==contraChar[j]){
@@ -58,5 +59,12 @@ public class ClienteRepository {
             }
         }
         return "";
+    }
+
+    public void obtenerPorCorreo(String correo) throws CorreoYaExistenteException {
+        System.out.println(clienteDao.findCliente(correo));
+        if(!clienteDao.findCorreo((correo)).isEmpty()){
+            throw new CorreoYaExistenteException();
+        }
     }
 }
