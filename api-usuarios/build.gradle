@@ -34,3 +34,7 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+task myTest(type: Test) {
+	testClassesDirs = sourceSets.test.output.classesDirs
+	classpath = sourceSets.test.runtimeClasspath
+}
